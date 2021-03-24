@@ -17,12 +17,12 @@ import React from 'react';
 import { css } from '@emotion/core';
 
 import styled, { StyleProps } from '../../styles/styled';
-import Text from '../Text';
-import { TextProps } from '../Text/Text';
+import Body from '../Body';
+import { BodyProps } from '../Body/Body';
 
 type Size = 'kilo' | 'mega' | 'giga';
 
-export interface BlockquoteProps extends TextProps {
+export interface BlockquoteProps extends BodyProps {
   /**
    * A Circuit UI body text size.
    */
@@ -47,14 +47,14 @@ const gigaStyles = ({ theme, size = 'mega' }: StyleProps & BlockquoteProps) =>
     border-left: 3px solid ${theme.colors.p500};
   `;
 
-const StyledText = styled(Text)<BlockquoteProps>(baseStyles, gigaStyles);
+const StyledBody = styled(Body)<BlockquoteProps>(baseStyles, gigaStyles);
 
 /**
  * Indented and italicised text to denote a quotation.
  */
 export const Blockquote = React.forwardRef(
   (props: BlockquoteProps, ref: BlockquoteProps['ref']) => (
-    <StyledText {...props} as="blockquote" italic ref={ref} />
+    <StyledBody {...props} as="blockquote" italic ref={ref} />
   ),
 );
 

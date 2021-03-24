@@ -18,7 +18,7 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 
-import Text from '../../../Text';
+import Body from '../../../Body';
 
 const textStyles = ({ theme }) => css`
   margin-bottom: 0;
@@ -27,12 +27,12 @@ const textStyles = ({ theme }) => css`
     ${theme.typography.text.kilo};
   }
 `;
-const StyledText = styled(Text)(textStyles);
+const StyledBody = styled(Body)(textStyles);
 
 const Status = ({ step, total, ...props }) => (
-  <StyledText bold {...props}>
+  <StyledBody bold {...props}>
     {step + 1} / {total}
-  </StyledText>
+  </StyledBody>
 );
 
 Status.propTypes = {

@@ -19,22 +19,22 @@ import { css } from '@emotion/core';
 import { ThemeProvider } from 'emotion-theming';
 import { light } from '@sumup/design-tokens';
 
-import { Text } from '../../src';
+import { Body } from '../../src';
 
-const StyledText = styled(Text)(
+const StyledBody = styled(Body)(
   ({ theme }) => css`
     line-height: 1.66 !important;
     font-size: 20px !important;
     color: ${theme.colors.n700};
     margin-bottom: ${theme.spacings.giga};
-  `
+  `,
 );
 
 const Intro = ({ children, ...props }) => (
   <ThemeProvider theme={light}>
-    <StyledText size="giga" {...props}>
+    <StyledBody size="giga" {...props}>
       {children}
-    </StyledText>
+    </StyledBody>
   </ThemeProvider>
 );
 

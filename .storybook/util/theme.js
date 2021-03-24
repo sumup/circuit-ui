@@ -3,7 +3,7 @@ import { css } from '@emotion/core';
 import { ThemeProvider } from 'emotion-theming';
 import { light } from '@sumup/design-tokens';
 
-import { BaseStyles, Headline, SubHeadline, Text, List } from '../../src';
+import { BaseStyles, Headline, SubHeadline, Body, List } from '../../src';
 
 import { Link } from '../components';
 
@@ -65,14 +65,14 @@ export const components = {
     size: 'kilo',
     css: subHeadlineStyles,
   }),
-  p: withThemeProvider(Text, { as: 'p', size: TEXT_SIZE }),
-  li: withThemeProvider(Text, { as: 'li', size: TEXT_SIZE }),
-  strong: withThemeProvider(Text, {
+  p: withThemeProvider(Body, { as: 'p', size: TEXT_SIZE }),
+  li: withThemeProvider(Body, { as: 'li', size: TEXT_SIZE }),
+  strong: withThemeProvider(Body, {
     as: 'strong',
     size: TEXT_SIZE,
     bold: true,
   }),
-  em: withThemeProvider(Text, {
+  em: withThemeProvider(Body, {
     as: 'em',
     size: TEXT_SIZE,
     italic: true,

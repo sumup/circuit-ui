@@ -56,7 +56,7 @@ describe('Tooltip', () => {
   it('should meet accessibility guidelines', async () => {
     const wrapper = renderToHtml(
       <Tooltip align={'center'} content="Tooltip">
-        Text
+        Body
       </Tooltip>,
     );
     const actual = await axe(wrapper);

@@ -22,7 +22,7 @@ import deprecate from '../../util/deprecate';
 
 type Size = 'kilo' | 'mega' | 'giga';
 
-export interface TextProps
+export interface BodyProps
   extends Omit<HTMLProps<HTMLParagraphElement>, 'size'> {
   /**
    * Choose from 3 font sizes.
@@ -66,7 +66,7 @@ const mobileSizeMap: { [key in Size]: Size } = {
   giga: 'mega',
 };
 
-const sizeStyles = ({ theme, size = 'mega' }: TextProps & StyleProps) => {
+const sizeStyles = ({ theme, size = 'mega' }: BodyProps & StyleProps) => {
   if (!size) {
     return null;
   }
@@ -83,32 +83,32 @@ const sizeStyles = ({ theme, size = 'mega' }: TextProps & StyleProps) => {
   `;
 };
 
-const boldStyles = ({ theme, bold }: TextProps & StyleProps) =>
+const boldStyles = ({ theme, bold }: BodyProps & StyleProps) =>
   bold &&
   css`
     label: text--bold;
     font-weight: ${theme.fontWeight.bold};
   `;
 
-const italicStyles = ({ italic }: TextProps & StyleProps) =>
+const italicStyles = ({ italic }: BodyProps & StyleProps) =>
   italic &&
   css`
     label: text--italic;
     font-style: italic;
   `;
 
-const strikeThroughStyles = ({ strike }: TextProps & StyleProps) =>
+const strikeThroughStyles = ({ strike }: BodyProps & StyleProps) =>
   strike &&
   css`
     label: text--strike-through;
     text-decoration: line-through;
   `;
 
-const marginStyles = ({ noMargin }: TextProps & StyleProps) => {
+const marginStyles = ({ noMargin }: BodyProps & StyleProps) => {
   if (!noMargin) {
     deprecate(
       [
-        'The default outer spacing in the Text component is deprecated.',
+        'The default outer spacing in the Body component is deprecated.',
         'Use the `noMargin` prop to silence this warning.',
         'Read more at https://github.com/sumup-oss/circuit-ui/issues/534.',
       ].join(' '),
@@ -123,12 +123,12 @@ const marginStyles = ({ noMargin }: TextProps & StyleProps) => {
 };
 
 /**
- * The Text component is used to present the core textual content
+ * The Body component is used to present the core textual content
  * to our users.
  */
-export const Text: FC<TextProps> = styled('p', {
+export const Body: FC<BodyProps> = styled('p', {
   shouldForwardProp: (prop) => isPropValid(prop) && prop !== 'size',
-})<TextProps>(
+})<BodyProps>(
   baseStyles,
   sizeStyles,
   marginStyles,

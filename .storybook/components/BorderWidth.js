@@ -20,7 +20,7 @@ import { css } from '@emotion/core';
 import { ThemeProvider } from 'emotion-theming';
 import { light } from '@sumup/design-tokens';
 
-import { Text } from '../../src';
+import { Body } from '../../src';
 
 const Box = styled('div')`
   ${({ theme, size }) => css`
@@ -47,7 +47,7 @@ const BorderWidthSize = styled('span')`
   `};
 `;
 
-const BorderWidthName = styled(Text)`
+const BorderWidthName = styled(Body)`
   ${({ theme }) => css`
     margin-left: ${theme.spacings.kilo};
     color: ${theme.colors.n500};
@@ -59,7 +59,7 @@ const BorderWidth = ({ size }) => (
     <Wrapper>
       <Box size={size} />
       <div>
-        <Text as="span">{size}</Text>
+        <Body as="span">{size}</Body>
         <BorderWidthSize>
           <BorderWidthName size="kilo" as="span">
             {light.borderWidth[size]}
@@ -73,7 +73,7 @@ const BorderWidth = ({ size }) => (
 BorderWidth.propTypes = {
   // eslint-disable-next-line
   theme: PropTypes.object.isRequired,
-  size: PropTypes.string.isRequired
+  size: PropTypes.string.isRequired,
 };
 
 export default BorderWidth;

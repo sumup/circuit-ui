@@ -20,7 +20,7 @@ import { css } from '@emotion/core';
 import { ThemeProvider } from 'emotion-theming';
 import { light } from '@sumup/design-tokens';
 
-import { Text } from '../../src';
+import { Body } from '../../src';
 
 const Box = styled('div')`
   ${({ theme, spacingName }) => css`
@@ -46,7 +46,7 @@ const SpacingSize = styled('span')`
   `};
 `;
 
-const SpacingName = styled(Text)`
+const SpacingName = styled(Body)`
   ${({ theme }) => css`
     margin-left: ${theme.spacings.kilo};
     color: ${theme.colors.n500};
@@ -58,7 +58,7 @@ const Spacing = ({ spacingName }) => (
     <Wrapper>
       <Box spacingName={spacingName} />
       <div>
-        <Text as="span">{spacingName}</Text>
+        <Body as="span">{spacingName}</Body>
         <SpacingSize>
           <SpacingName size="kilo" as="span">
             {light.spacings[spacingName]}
@@ -72,7 +72,7 @@ const Spacing = ({ spacingName }) => (
 Spacing.propTypes = {
   // eslint-disable-next-line
   theme: PropTypes.object.isRequired,
-  spacingName: PropTypes.string.isRequired
+  spacingName: PropTypes.string.isRequired,
 };
 
 export default Spacing;

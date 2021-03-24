@@ -20,7 +20,7 @@ import styled, { NoTheme, StyleProps } from '../../styles/styled';
 import { disableVisually } from '../../styles/style-mixins';
 import { uniqueId } from '../../util/id';
 import deprecate from '../../util/deprecate';
-import { Text, TextProps } from '../Text/Text';
+import { Body, BodyProps } from '../Body/Body';
 
 import { Switch, SwitchProps } from './components/Switch/Switch';
 
@@ -55,21 +55,21 @@ const textWrapperStyles = ({ theme }: StyleProps) => css`
   }
 `;
 
-const ToggleTextWrapper = styled('label')<NoTheme>(textWrapperStyles);
+const ToggleBodyWrapper = styled('label')<NoTheme>(textWrapperStyles);
 
 const labelStyles = css`
   label: toggle__label;
   padding-top: 2px;
 `;
 
-const ToggleLabel = styled(Text)(labelStyles);
+const ToggleLabel = styled(Body)(labelStyles);
 
 const explanationStyles = ({ theme }: StyleProps) => css`
   label: toggle__explanation;
   color: ${theme.colors.n700};
 `;
 
-const ToggleExplanation = styled(Text)<TextProps>(explanationStyles);
+const ToggleExplanation = styled(Body)<BodyProps>(explanationStyles);
 
 type WrapperElProps = Pick<ToggleProps, 'noMargin' | 'disabled'>;
 
@@ -129,7 +129,7 @@ export const Toggle = React.forwardRef(
       <ToggleWrapper noMargin={noMargin} disabled={props.disabled}>
         <Switch {...props} aria-labelledby={labelId} id={switchId} ref={ref} />
         {(label || explanation) && (
-          <ToggleTextWrapper id={labelId} htmlFor={switchId}>
+          <ToggleBodyWrapper id={labelId} htmlFor={switchId}>
             {label && (
               <ToggleLabel size="kilo" noMargin>
                 {label}
@@ -140,7 +140,7 @@ export const Toggle = React.forwardRef(
                 {explanation}
               </ToggleExplanation>
             )}
-          </ToggleTextWrapper>
+          </ToggleBodyWrapper>
         )}
       </ToggleWrapper>
     );
