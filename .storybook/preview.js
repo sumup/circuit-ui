@@ -30,7 +30,7 @@ const SORT_ORDER = {
     'Event Tracking',
     'Static CSS',
   ],
-  Typography: ['Heading', 'SubHeading', 'Text'],
+  Typography: ['Headline', 'SubHeadline', 'Text'],
   Layout: [],
   Forms: [],
   Components: [],

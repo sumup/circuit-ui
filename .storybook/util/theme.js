@@ -3,7 +3,7 @@ import { css } from '@emotion/core';
 import { ThemeProvider } from 'emotion-theming';
 import { light } from '@sumup/design-tokens';
 
-import { BaseStyles, Heading, SubHeading, Text, List } from '../../src';
+import { BaseStyles, Headline, SubHeadline, Text, List } from '../../src';
 
 import { Link } from '../components';
 
@@ -15,7 +15,7 @@ export const theme = create({
   fontBase: light.fontStack.default,
   colorPrimary: light.colors.p500,
   colorSecondary: light.colors.p500,
-  appBg: light.colors.bodyBg
+  appBg: light.colors.bodyBg,
 });
 
 // FIXME: BaseStyles should only be included once, however, I couldn't find
@@ -29,55 +29,55 @@ const withThemeProvider = (Component, baseProps = {}) => (props = {}) => (
 
 const TEXT_SIZE = 'mega';
 
-const headingStyles = theme => css`
+const headingStyles = (theme) => css`
   *:not(h1):not(h2):not(h3) + & {
     margin-top: ${theme.spacings.peta};
   }
 `;
 
-const subHeadingStyles = theme => css`
+const subHeadlineStyles = (theme) => css`
   margin-top: ${theme.spacings.giga};
 `;
 
 export const components = {
-  h1: withThemeProvider(Heading, {
+  h1: withThemeProvider(Headline, {
     as: 'h1',
     size: 'zetta',
-    css: headingStyles
+    css: headingStyles,
   }),
-  h2: withThemeProvider(Heading, {
+  h2: withThemeProvider(Headline, {
     as: 'h2',
     size: 'peta',
-    css: headingStyles
+    css: headingStyles,
   }),
-  h3: withThemeProvider(Heading, {
+  h3: withThemeProvider(Headline, {
     as: 'h3',
     size: 'giga',
-    css: headingStyles
+    css: headingStyles,
   }),
-  h4: withThemeProvider(SubHeading, {
+  h4: withThemeProvider(SubHeadline, {
     as: 'h4',
     size: 'mega',
-    css: subHeadingStyles
+    css: subHeadlineStyles,
   }),
-  h5: withThemeProvider(SubHeading, {
+  h5: withThemeProvider(SubHeadline, {
     as: 'h5',
     size: 'kilo',
-    css: subHeadingStyles
+    css: subHeadlineStyles,
   }),
   p: withThemeProvider(Text, { as: 'p', size: TEXT_SIZE }),
   li: withThemeProvider(Text, { as: 'li', size: TEXT_SIZE }),
   strong: withThemeProvider(Text, {
     as: 'strong',
     size: TEXT_SIZE,
-    bold: true
+    bold: true,
   }),
   em: withThemeProvider(Text, {
     as: 'em',
     size: TEXT_SIZE,
-    italic: true
+    italic: true,
   }),
   ul: withThemeProvider(List, { size: TEXT_SIZE }),
   ol: withThemeProvider(List, { ordered: true, size: TEXT_SIZE }),
-  a: withThemeProvider(Link, { size: TEXT_SIZE })
+  a: withThemeProvider(Link, { size: TEXT_SIZE }),
 };
