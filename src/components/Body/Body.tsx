@@ -20,7 +20,8 @@ import isPropValid from '@emotion/is-prop-valid';
 import styled, { StyleProps } from '../../styles/styled';
 import deprecate from '../../util/deprecate';
 
-type Size = 'kilo' | 'mega' | 'giga';
+type Size = 'kilo' | 'mega';
+type Variant = 'highlight' | 'quote' | 'success' | 'error' | 'subtle';
 
 export interface BodyProps
   extends Omit<HTMLProps<HTMLParagraphElement>, 'size'> {
@@ -29,21 +30,14 @@ export interface BodyProps
    */
   size?: Size;
   /**
+   * Choose from style variants.
+   */
+  variant?: Variant;
+  /**
+  /**
    * Remove the default margin below the text.
    */
   noMargin?: boolean;
-  /**
-   * Turn the text bold.
-   */
-  bold?: boolean;
-  /**
-   * Turn the text italic.
-   */
-  italic?: boolean;
-  /**
-   * Add a line through the text.
-   */
-  strike?: boolean;
   /**
    * Render the text using any HTML element.
    */
@@ -55,16 +49,10 @@ export interface BodyProps
 }
 
 const baseStyles = ({ theme }: StyleProps) => css`
-  label: text;
+  label: body;
   font-weight: ${theme.fontWeight.regular};
   margin-bottom: ${theme.spacings.mega};
 `;
-
-const mobileSizeMap: { [key in Size]: Size } = {
-  kilo: 'kilo',
-  mega: 'mega',
-  giga: 'mega',
-};
 
 const sizeStyles = ({ theme, size = 'mega' }: BodyProps & StyleProps) => {
   if (!size) {
@@ -73,36 +61,51 @@ const sizeStyles = ({ theme, size = 'mega' }: BodyProps & StyleProps) => {
 
   return css`
     label: ${`text--${size}`};
-    font-size: ${theme.typography.text[mobileSizeMap[size]].fontSize};
-    line-height: ${theme.typography.text[mobileSizeMap[size]].lineHeight};
-
-    ${theme.mq.kilo} {
-      font-size: ${theme.typography.text[size].fontSize};
-      line-height: ${theme.typography.text[size].lineHeight};
-    }
+    font-size: ${theme.typography.text[size].fontSize};
+    line-height: ${theme.typography.text[size].lineHeight};
   `;
 };
 
-const boldStyles = ({ theme, bold }: BodyProps & StyleProps) =>
-  bold &&
-  css`
-    label: text--bold;
-    font-weight: ${theme.fontWeight.bold};
-  `;
-
-const italicStyles = ({ italic }: BodyProps & StyleProps) =>
-  italic &&
-  css`
-    label: text--italic;
-    font-style: italic;
-  `;
-
-const strikeThroughStyles = ({ strike }: BodyProps & StyleProps) =>
-  strike &&
-  css`
-    label: text--strike-through;
-    text-decoration: line-through;
-  `;
+const variantStyles = ({
+  theme,
+  variant = 'highlight',
+}: BodyProps & StyleProps) => {
+  switch (variant) {
+    default: {
+      return null;
+    }
+    case 'highlight': {
+      return css`
+        label: ${`body--${variant}`};
+        font-weight: ${theme.fontWeight.bold};
+      `;
+    }
+    case 'quote': {
+      return css`
+        label: ${`body--${variant}`};
+        font-style: italic;
+      `;
+    }
+    case 'success': {
+      return css`
+        label: ${`body--${variant}`};
+        color: ${theme.colors.success};
+      `;
+    }
+    case 'error': {
+      return css`
+        label: ${`body--${variant}`};
+        color: ${theme.colors.danger};
+      `;
+    }
+    case 'subtle': {
+      return css`
+        label: ${`body--${variant}`};
+        color: ${theme.colors.n700};
+      `;
+    }
+  }
+};
 
 const marginStyles = ({ noMargin }: BodyProps & StyleProps) => {
   if (!noMargin) {
@@ -128,11 +131,4 @@ const marginStyles = ({ noMargin }: BodyProps & StyleProps) => {
  */
 export const Body: FC<BodyProps> = styled('p', {
   shouldForwardProp: (prop) => isPropValid(prop) && prop !== 'size',
-})<BodyProps>(
-  baseStyles,
-  sizeStyles,
-  marginStyles,
-  boldStyles,
-  italicStyles,
-  strikeThroughStyles,
-);
+})<BodyProps>(baseStyles, sizeStyles, marginStyles, variantStyles);

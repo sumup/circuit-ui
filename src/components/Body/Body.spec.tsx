@@ -35,7 +35,7 @@ describe('Body', () => {
     expect(actual).toMatchSnapshot();
   });
 
-  const sizes: BodyProps['size'][] = ['kilo', 'mega', 'giga'];
+  const sizes: BodyProps['size'][] = ['kilo', 'mega'];
   it.each(sizes)('should render with size %s', (size) => {
     const actual = create(<Body size={size}>{`${size as string} text`}</Body>);
     expect(actual).toMatchSnapshot();
@@ -47,17 +47,17 @@ describe('Body', () => {
   });
 
   it('should render bold text when passed the bold prop', () => {
-    const actual = create(<Body bold />);
+    const actual = create(<Body variant="highlight" />);
     expect(actual).toMatchSnapshot();
   });
 
   it('should render italic text when passed the italic prop', () => {
-    const actual = create(<Body italic />);
+    const actual = create(<Body variant="quote" />);
     expect(actual).toMatchSnapshot();
   });
 
   it('should render struck through text when passed the strike prop', () => {
-    const actual = create(<Body strike />);
+    const actual = create(<Body variant="highlight" />);
     expect(actual).toMatchSnapshot();
   });
 

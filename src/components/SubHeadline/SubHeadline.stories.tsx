@@ -31,12 +31,3 @@ export const Base = (args: SubHeadlineProps) => (
     This is a subheading
   </SubHeadline>
 );
-
-const sizes = ['mega', 'kilo'] as const;
-
-export const Sizes = (args: SubHeadlineProps) =>
-  sizes.map((s) => (
-    <SubHeadline key={s} {...args} size={s} noMargin>
-      This is a {s} subheading.
-    </SubHeadline>
-  ));

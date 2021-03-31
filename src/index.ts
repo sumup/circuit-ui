@@ -27,8 +27,6 @@ export { default as Anchor } from './components/Anchor';
 export type { AnchorProps } from './components/Anchor';
 export { default as List } from './components/List';
 export type { ListProps } from './components/List';
-export { default as Blockquote } from './components/Blockquote';
-export type { BlockquoteProps } from './components/Blockquote';
 
 // Forms
 export {

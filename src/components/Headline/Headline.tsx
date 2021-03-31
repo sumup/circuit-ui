@@ -20,7 +20,7 @@ import isPropValid from '@emotion/is-prop-valid';
 import styled, { StyleProps } from '../../styles/styled';
 import deprecate from '../../util/deprecate';
 
-type Size = 'kilo' | 'mega' | 'giga' | 'tera' | 'peta' | 'exa' | 'zetta';
+type Size = 'mega' | 'giga' | 'tera' | 'peta';
 
 export interface HeadlineProps
   extends Omit<HTMLProps<HTMLHeadingElement>, 'size'> {
@@ -38,36 +38,24 @@ export interface HeadlineProps
   as?: string;
 }
 
-const mobileSizeMap: { [key in Size]: Size } = {
-  kilo: 'kilo',
-  mega: 'mega',
-  giga: 'mega',
-  tera: 'giga',
-  peta: 'tera',
-  exa: 'peta',
-  zetta: 'peta',
-};
-
 const baseStyles = ({ theme }: StyleProps) => css`
-  label: heading;
+  label: headline;
   font-weight: ${theme.fontWeight.bold};
   margin-bottom: ${theme.spacings.giga};
   color: ${theme.colors.black};
 `;
 
-const sizeStyles = ({ theme, size = 'peta' }: StyleProps & HeadlineProps) =>
-  size &&
-  css`
-    label: ${`heading--${size}`};
-    font-size: ${theme.typography.headings[mobileSizeMap[size]].fontSize};
-    line-height: ${theme.typography.headings[mobileSizeMap[size]].lineHeight};
+const sizeStyles = ({ theme, size = 'peta' }: StyleProps & HeadlineProps) => {
+  if (!size) {
+    return null;
+  }
 
-    ${theme.mq.kilo} {
-      font-size: ${theme.typography.headings[size].fontSize};
-      line-height: ${theme.typography.headings[size].lineHeight};
-    }
+  return css`
+    label: ${`headline-${size}`};
+    font-size: ${theme.typography.headings[size].fontSize};
+    line-height: ${theme.typography.headings[size].lineHeight};
   `;
-
+};
 const noMarginStyles = ({ noMargin }: HeadlineProps) => {
   if (!noMargin) {
     deprecate(

@@ -37,7 +37,7 @@ export const Base = (args: BodyProps) => (
   </Body>
 );
 
-const sizes = ['kilo', 'mega', 'giga'] as const;
+const sizes = ['kilo', 'mega'] as const;
 
 export const Sizes = (args: BodyProps) =>
   sizes.map((s) => (
@@ -46,20 +46,11 @@ export const Sizes = (args: BodyProps) =>
     </Body>
   ));
 
-export const Bold = (args: BodyProps) => (
-  <Body {...args} as="strong" bold noMargin>
-    {content}
-  </Body>
-);
+const variants = ['highlight', 'quote', 'success', 'error', 'subtle'] as const;
 
-export const Italic = (args: BodyProps) => (
-  <Body {...args} as="em" italic noMargin>
-    {content}
-  </Body>
-);
-
-export const Strike = (args: BodyProps) => (
-  <Body {...args} as="s" strike noMargin>
-    {content}
-  </Body>
-);
+export const Variants = (args: BodyProps) =>
+  variants.map((variant) => (
+    <Body key={variant} {...args} variant={variant} noMargin>
+      This is a {variant} body
+    </Body>
+  ));

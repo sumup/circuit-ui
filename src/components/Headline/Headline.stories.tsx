@@ -32,11 +32,11 @@ export const Base = (args: HeadlineProps) => (
   </Headline>
 );
 
-const sizes = ['zetta', 'exa', 'peta', 'tera', 'giga', 'mega', 'kilo'] as const;
+const sizes = ['peta', 'tera', 'giga', 'mega'] as const;
 
 export const Sizes = (args: HeadlineProps) =>
-  sizes.map((s) => (
-    <Headline key={s} {...args} size={s} noMargin>
-      This is a {s} heading
+  sizes.map((size) => (
+    <Headline key={size} {...args} size={size} noMargin>
+      This is a {size} heading
     </Headline>
   ));
