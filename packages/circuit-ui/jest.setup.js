@@ -14,7 +14,6 @@
  */
 
 import '@testing-library/jest-dom/extend-expect';
-import { createSerializer } from 'jest-emotion';
 import { toHaveNoViolations } from 'jest-axe';
 import { fireEvent } from '@testing-library/react';
 
@@ -49,13 +48,3 @@ if (global.document) {
 
 // Add custom matchers
 expect.extend(toHaveNoViolations);
-
-// Add a snapshot serializer that removes random hashes
-// from emotion class names.
-expect.addSnapshotSerializer(
-  createSerializer({
-    classNameReplacer(className, index) {
-      return `circuit-${index}`;
-    },
-  }),
-);

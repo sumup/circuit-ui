@@ -9,7 +9,6 @@
   "moduleFileExtensions": ["js", "jsx", "ts", "tsx"],
   "testPathIgnorePatterns": ["./.next/", "./node_modules/"],
   "setupFilesAfterEnv": ["<rootDir>/setupTests.tsx"],
-  "snapshotSerializers": ["jest-emotion"],
   "coverageDirectory": "./__coverage__",
   "coverageReporters": ["cobertura", "text-summary", "html"],
   "collectCoverageFrom": [
