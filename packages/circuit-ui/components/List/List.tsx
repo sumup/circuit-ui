@@ -13,19 +13,18 @@
  * limitations under the License.
  */
 
-import React, { forwardRef, Ref, HTMLProps } from 'react';
+import React, { forwardRef, Ref } from 'react';
 import { css } from '@emotion/core';
 import isPropValid from '@emotion/is-prop-valid';
 
 import styled, { StyleProps } from '../../styles/styled';
-import { textMega, textKilo, textGiga } from '../../styles/style-mixins';
+import Body, { BodyProps } from '../Body';
 import deprecate from '../../util/deprecate';
 
-type Size = 'kilo' | 'mega' | 'giga';
+type Size = 'one' | 'two';
 type Variant = 'ordered' | 'unordered';
 
-export interface ListProps
-  extends Omit<HTMLProps<HTMLOListElement>, 'size' | 'type'> {
+export interface ListProps extends Omit<BodyProps, 'variant'> {
   /**
    * A Circuit UI body text size.
    */
@@ -41,7 +40,7 @@ export interface ListProps
   /**
    The ref to the HTML DOM element
    */
-  ref?: Ref<HTMLOListElement & HTMLUListElement>;
+  ref?: Ref<HTMLElement>;
 }
 
 const baseStyles = ({ theme }: StyleProps) => css`
@@ -50,32 +49,28 @@ const baseStyles = ({ theme }: StyleProps) => css`
   margin-bottom: ${theme.spacings.mega};
 `;
 
-const sizeStyles = ({ theme, size = 'mega' }: ListProps & StyleProps) => {
+const sizeStyles = ({ theme, size = 'one' }: ListProps & StyleProps) => {
   const sizeMap = {
-    kilo: {
+    one: {
       marginBottom: theme.spacings.kilo,
       paddingLeft: theme.spacings.kilo,
       marginLeft: theme.spacings.bit,
-      type: textKilo({ theme }),
     },
-    mega: {
+    two: {
       marginBottom: theme.spacings.byte,
       paddingLeft: theme.spacings.kilo,
       marginLeft: theme.spacings.kilo,
-      type: textMega({ theme }),
     },
-    giga: {
-      marginBottom: theme.spacings.kilo,
-      paddingLeft: theme.spacings.mega,
-      marginLeft: theme.spacings.kilo,
-      type: textGiga({ theme }),
-    },
+    // giga: {
+    //   marginBottom: theme.spacings.kilo,
+    //   paddingLeft: theme.spacings.mega,
+    //   marginLeft: theme.spacings.kilo,
+    // },
   };
-  const { marginBottom, paddingLeft, marginLeft, type } = sizeMap[size];
+  const { marginBottom, paddingLeft, marginLeft } = sizeMap[size];
   return css`
     label: ${`list--${size}`};
     padding-left: ${paddingLeft};
-    ${type};
 
     li {
       margin-bottom: ${marginBottom};
@@ -106,9 +101,9 @@ const marginStyles = ({ noMargin }: ListProps) => {
   `;
 };
 
-const BaseList = styled('ol', {
+const BaseList = styled(Body, {
   shouldForwardProp: (prop) => isPropValid(prop) && prop !== 'size',
-})<ListProps>(baseStyles, sizeStyles, marginStyles);
+})<Omit<ListProps, 'variant'>>(baseStyles, sizeStyles, marginStyles);
 
 /**
  * A list, which can be ordered or unordered.

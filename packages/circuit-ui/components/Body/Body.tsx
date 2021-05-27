@@ -25,8 +25,7 @@ import deprecate from '../../util/deprecate';
 type Size = 'one' | 'two';
 type Variant = 'highlight' | 'quote' | 'success' | 'error' | 'subtle';
 
-export interface BodyProps
-  extends Omit<HTMLProps<HTMLParagraphElement>, 'size'> {
+export interface BodyProps extends Omit<HTMLProps<HTMLElement>, 'size'> {
   /**
    * Choose from 2 font sizes.
    */

@@ -118,7 +118,7 @@ describe('Anchor', () => {
     });
 
     it('should accept a working ref for a button', () => {
-      const tref = React.createRef<any>();
+      const tref = React.createRef<HTMLButtonElement>();
       const { container } = render(
         <Anchor onClick={jest.fn()} ref={tref}>
           button
@@ -129,7 +129,7 @@ describe('Anchor', () => {
     });
 
     it('should accept a working ref for a link', () => {
-      const tref = React.createRef<any>();
+      const tref = React.createRef<HTMLAnchorElement>();
       const { container } = render(
         <Anchor href="https://sumup.com" ref={tref}>
           link
@@ -140,7 +140,7 @@ describe('Anchor', () => {
     });
 
     it('should accept a working ref for a span', () => {
-      const tref = React.createRef<any>();
+      const tref = React.createRef<HTMLSpanElement>();
       const { container } = render(<Anchor ref={tref}>span</Anchor>);
       const span = container.querySelector('span');
       expect(tref.current).toBe(span);
