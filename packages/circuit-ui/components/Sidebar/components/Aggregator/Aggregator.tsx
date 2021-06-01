@@ -125,7 +125,7 @@ const disabledStyles = ({ theme, disabled }: StyleProps & Disabled) =>
     color: ${theme.colors.n500};
   `;
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const NavLabel = BaseNavLabel as any;
 
 const AggregatorContainer = styled('button')<Disabled & Selected>(
@@ -146,7 +146,7 @@ const Aggregator = ({
   onClick,
   tracking,
   ...props
-}: AggregatorProps) => {
+}: AggregatorProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
   const selectedChild = hasSelectedChild(children);
   const baseHandleClick = (event: MouseEvent | KeyboardEvent) => {

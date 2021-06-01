@@ -102,7 +102,7 @@ export const Notification = ({
   onClose,
   closeLabel,
   ...props
-}: NotificationProps) => {
+}: NotificationProps): JSX.Element => {
   const Icon = icon || iconMap[variant];
 
   return (

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import PropTypes from 'prop-types';
+import PropTypes, { Validator } from 'prop-types';
 
 import {
   Theme,
@@ -35,7 +35,7 @@ import {
 const typePropType = PropTypes.shape({
   fontSize: PropTypes.string,
   lineHeight: PropTypes.string,
-} as { [key in keyof Typography]: any }).isRequired;
+} as { [key in keyof Typography]: Validator<string> }).isRequired;
 
 const breakpointPropType = PropTypes.oneOfType([
   PropTypes.string,
@@ -128,7 +128,7 @@ export const themePropType = PropTypes.shape({
     shadow: PropTypes.string.isRequired,
     bodyBg: PropTypes.string.isRequired,
     bodyColor: PropTypes.string.isRequired,
-  } as { [key in keyof Colors]: any }).isRequired,
+  } as { [key in keyof Colors]: Validator<string> }).isRequired,
   spacings: PropTypes.shape({
     bit: PropTypes.string.isRequired,
     byte: PropTypes.string.isRequired,
@@ -139,12 +139,12 @@ export const themePropType = PropTypes.shape({
     peta: PropTypes.string.isRequired,
     exa: PropTypes.string.isRequired,
     zetta: PropTypes.string.isRequired,
-  } as { [key in keyof Spacings]: any }).isRequired,
+  } as { [key in keyof Spacings]: Validator<string> }).isRequired,
   iconSizes: PropTypes.shape({
     kilo: PropTypes.string.isRequired,
     mega: PropTypes.string.isRequired,
     giga: PropTypes.string.isRequired,
-  } as { [key in keyof IconSizes]: any }).isRequired,
+  } as { [key in keyof IconSizes]: Validator<string> }).isRequired,
   borderRadius: PropTypes.shape({
     kilo: PropTypes.string.isRequired,
     mega: PropTypes.string.isRequired,
@@ -152,11 +152,11 @@ export const themePropType = PropTypes.shape({
     tera: PropTypes.string.isRequired,
     circle: PropTypes.string.isRequired,
     pill: PropTypes.string.isRequired,
-  } as { [key in keyof BorderRadius]: any }).isRequired,
+  } as { [key in keyof BorderRadius]: Validator<string> }).isRequired,
   borderWidth: PropTypes.shape({
     kilo: PropTypes.string.isRequired,
     mega: PropTypes.string.isRequired,
-  } as { [key in keyof BorderWidth]: any }).isRequired,
+  } as { [key in keyof BorderWidth]: Validator<string> }).isRequired,
   typography: PropTypes.shape({
     headings: PropTypes.shape({
       kilo: typePropType,
@@ -191,11 +191,11 @@ export const themePropType = PropTypes.shape({
   fontStack: PropTypes.shape({
     default: PropTypes.string,
     mono: PropTypes.string,
-  } as { [key in keyof FontStack]: any }).isRequired,
+  } as { [key in keyof FontStack]: Validator<string> }).isRequired,
   fontWeight: PropTypes.shape({
     regular: PropTypes.string.isRequired,
     bold: PropTypes.string.isRequired,
-  } as { [key in keyof FontWeight]: any }).isRequired,
+  } as { [key in keyof FontWeight]: Validator<string> }).isRequired,
   breakpoints: PropTypes.shape({
     untilKilo: breakpointPropType,
     kilo: breakpointPropType,
@@ -206,7 +206,7 @@ export const themePropType = PropTypes.shape({
     giga: breakpointPropType,
     gigaToTera: breakpointPropType,
     tera: breakpointPropType,
-  } as { [key in keyof Breakpoints]: any }).isRequired,
+  } as { [key in keyof Breakpoints]: Validator<string | number> }).isRequired,
   mq: PropTypes.shape({
     untilKilo: PropTypes.string.isRequired,
     kilo: PropTypes.string.isRequired,
@@ -217,7 +217,7 @@ export const themePropType = PropTypes.shape({
     giga: PropTypes.string.isRequired,
     gigaToTera: PropTypes.string.isRequired,
     tera: PropTypes.string.isRequired,
-  } as { [key in keyof MediaQueries]: any }).isRequired,
+  } as { [key in keyof MediaQueries]: Validator<string> }).isRequired,
   grid: PropTypes.shape({
     default: gridPropType,
     untilKilo: gridPropType,
@@ -225,11 +225,11 @@ export const themePropType = PropTypes.shape({
     mega: gridPropType,
     giga: gridPropType,
     tera: gridPropType,
-  } as { [key in keyof Grid]: any }).isRequired,
+  } as { [key in keyof Grid]: Validator<unknown> }).isRequired,
   transitions: PropTypes.shape({
     default: PropTypes.string.isRequired,
     slow: PropTypes.string.isRequired,
-  } as { [key in keyof Transitions]: any }).isRequired,
+  } as { [key in keyof Transitions]: Validator<string> }).isRequired,
   zIndex: PropTypes.shape({
     default: PropTypes.number.isRequired,
     absolute: PropTypes.number.isRequired,
@@ -243,5 +243,5 @@ export const themePropType = PropTypes.shape({
     backdrop: PropTypes.number.isRequired,
     sidebar: PropTypes.number.isRequired,
     modal: PropTypes.number.isRequired,
-  } as { [key in keyof ZIndex]: any }).isRequired,
-} as { [key in keyof Theme]: any });
+  } as { [key in keyof ZIndex]: Validator<number> }).isRequired,
+} as { [key in keyof Theme]: Validator<unknown> });

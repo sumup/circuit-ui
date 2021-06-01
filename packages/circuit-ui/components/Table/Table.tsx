@@ -220,13 +220,13 @@ class Table extends Component<TableProps, TableState> {
 
   private tableRef = createRef<HTMLDivElement>();
 
-  componentDidMount() {
+  componentDidMount(): void {
     if (this.props.scrollable) {
       this.addVerticalScroll();
     }
   }
 
-  componentDidUpdate(prevProps: TableProps) {
+  componentDidUpdate(prevProps: TableProps): void {
     if (!prevProps.scrollable && this.props.scrollable) {
       this.addVerticalScroll();
     }
@@ -236,13 +236,13 @@ class Table extends Component<TableProps, TableState> {
     }
   }
 
-  componentWillUnmount() {
+  componentWillUnmount(): void {
     if (this.props.scrollable) {
       this.removeVerticalScroll();
     }
   }
 
-  addVerticalScroll = () => {
+  addVerticalScroll = (): void => {
     this.calculateTableBodyHeight();
 
     window.addEventListener(
@@ -251,11 +251,11 @@ class Table extends Component<TableProps, TableState> {
     );
   };
 
-  removeVerticalScroll = () => {
+  removeVerticalScroll = (): void => {
     window.removeEventListener('resize', this.calculateTableBodyHeight);
   };
 
-  calculateTableBodyHeight = () => {
+  calculateTableBodyHeight = (): void => {
     this.setState({
       tableBodyHeight:
         isNil(this.tableRef.current) ||
@@ -265,11 +265,11 @@ class Table extends Component<TableProps, TableState> {
     });
   };
 
-  onSortEnter = (i: number) => this.setState({ sortHover: i });
+  onSortEnter = (i: number): void => this.setState({ sortHover: i });
 
-  onSortLeave = () => this.setState({ sortHover: undefined });
+  onSortLeave = (): void => this.setState({ sortHover: undefined });
 
-  onSortBy = (i: number) => {
+  onSortBy = (i: number): void => {
     const { sortedRow, sortDirection } = this.state;
     const isActive = i === sortedRow;
     const nextDirection = getSortDirection(isActive, sortDirection);
@@ -277,7 +277,7 @@ class Table extends Component<TableProps, TableState> {
     this.updateSort(i, nextDirection);
   };
 
-  getSortedRows = () => {
+  getSortedRows = (): Row[] => {
     const { rows, onSortBy } = this.props;
     const { sortDirection, sortedRow } = this.state;
 
@@ -290,23 +290,23 @@ class Table extends Component<TableProps, TableState> {
       : this.defaultSortBy(sortedRow, rows, sortDirection);
   };
 
-  updateSort = (i: number, nextDirection: Direction) =>
+  updateSort = (i: number, nextDirection: Direction): void =>
     this.setState({
       sortedRow: i,
       sortDirection: nextDirection,
     });
 
-  defaultSortBy = (i: number, rows: Row[], direction?: Direction) => {
+  defaultSortBy = (i: number, rows: Row[], direction?: Direction): Row[] => {
     const sortFn = direction === 'ascending' ? ascendingSort : descendingSort;
 
     return [...rows].sort(sortFn(i));
   };
 
-  handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+  handleScroll = (e: React.UIEvent<HTMLDivElement>): void => {
     this.setState({ scrollTop: e.currentTarget.scrollTop });
   };
 
-  render() {
+  render(): JSX.Element {
     const {
       rowHeaders = true,
       headers = [],

@@ -5,6 +5,7 @@ import Document, {
   Main,
   NextScript,
   DocumentContext,
+  DocumentInitialProps,
   DocumentProps as NextDocumentProps,
 } from 'next/document';
 import { extractCritical } from 'emotion-server';
@@ -17,13 +18,16 @@ export default class extends Document<DocumentProps> {
    * Manually configuring Emotion for server-side rendering (SSR) enables
    * the safe use of :nth-child() selectors.
    */
-  static async getInitialProps({ renderPage, ...ctx }: DocumentContext) {
+  static async getInitialProps({
+    renderPage,
+    ...ctx
+  }: DocumentContext): Promise<DocumentInitialProps> {
     const page = await renderPage();
     const styles = extractCritical(page.html);
     return { ...ctx, ...page, ...styles };
   }
 
-  render() {
+  render(): JSX.Element {
     return (
       <Html lang={process.env.SITE_LOCALE}>
         <Head>

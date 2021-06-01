@@ -59,7 +59,7 @@ const mapSpacingValue = (theme: Theme, value: SpacingValue) => {
       console.warn(
         [
           `The number "${value as number}" was passed to the spacing mixin.`,
-          `This is not supported. Pass a spacing constant, 'auto', or 0 instead.`,
+          "This is not supported. Pass a spacing constant, 'auto', or 0 instead.",
         ].join(' '),
       );
     }

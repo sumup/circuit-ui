@@ -37,7 +37,9 @@ const NotFound: NextPage = () => (
           {title}
         </Heading>
         <Text>
-          {`The page you requested can't be found. What’s worse, a hilarious 404 page can’t be found either.`}
+          {
+            "The page you requested can't be found. What’s worse, a hilarious 404 page can’t be found either."
+          }
         </Text>
 
         <Link href="/" passHref>

@@ -201,6 +201,7 @@ export const Tag = React.forwardRef(
     ref: BaseProps['ref'],
   ) => {
     const as = onClick ? 'button' : 'div';
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleClick = useClickHandler<MouseEvent<any>>(
       onClick,
       tracking,

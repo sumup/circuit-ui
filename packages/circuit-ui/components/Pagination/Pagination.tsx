@@ -102,7 +102,7 @@ export const Pagination = ({
   totalLabel,
   tracking = {},
   ...props
-}: PaginationProps) => {
+}: PaginationProps): JSX.Element | null => {
   // Can't use our custom useClickHandler here because it doesn't allow us
   // to add the page number as label. So we implement it from scratch:
   const dispatch = useClickTrigger();

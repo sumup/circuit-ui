@@ -112,7 +112,7 @@ const getIcon = (state: ValidationHintProps) => {
 export const ValidationHint = ({
   validationHint,
   ...props
-}: ValidationHintProps) => {
+}: ValidationHintProps): JSX.Element | null => {
   if (!validationHint) {
     return null;
   }

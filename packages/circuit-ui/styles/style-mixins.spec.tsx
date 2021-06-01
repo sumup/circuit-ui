@@ -90,12 +90,12 @@ describe('Style helpers', () => {
   describe('spacing', () => {
     it('should apply spacing to four sides when passing a string', () => {
       const { styles } = spacing('mega')(light);
-      expect(styles).toMatchInlineSnapshot(`"margin:16px;"`);
+      expect(styles).toMatchInlineSnapshot('"margin:16px;"');
     });
 
     it('should apply individual spacing for one side when passing an object', () => {
       const { styles } = spacing({ bottom: 'kilo' })(light);
-      expect(styles).toMatchInlineSnapshot(`"margin-bottom:12px;"`);
+      expect(styles).toMatchInlineSnapshot('"margin-bottom:12px;"');
     });
 
     it('should apply individual spacing to each sides when passing all four values in an object', () => {
@@ -106,7 +106,7 @@ describe('Style helpers', () => {
         bottom: 'kilo',
       })(light);
       expect(styles).toMatchInlineSnapshot(
-        `"margin-top:12px;margin-right:16px;margin-bottom:12px;margin-left:24px;"`,
+        '"margin-top:12px;margin-right:16px;margin-bottom:12px;margin-left:24px;"',
       );
     });
 
@@ -118,18 +118,18 @@ describe('Style helpers', () => {
         bottom: 'kilo',
       })(light);
       expect(styles).toMatchInlineSnapshot(
-        `"margin-top:0;margin-right:16px;margin-bottom:12px;margin-left:24px;"`,
+        '"margin-top:0;margin-right:16px;margin-bottom:12px;margin-left:24px;"',
       );
     });
 
     it('should support `0` spacing value', () => {
       const { styles } = spacing(0)(light);
-      expect(styles).toMatchInlineSnapshot(`"margin:0;"`);
+      expect(styles).toMatchInlineSnapshot('"margin:0;"');
     });
 
     it('should support the `auto` spacing value', () => {
       const { styles } = spacing('auto')(light);
-      expect(styles).toMatchInlineSnapshot(`"margin:auto;"`);
+      expect(styles).toMatchInlineSnapshot('"margin:auto;"');
     });
   });
 

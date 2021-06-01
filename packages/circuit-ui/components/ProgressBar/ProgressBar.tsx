@@ -243,7 +243,7 @@ export function ProgressBar({
   label,
   hideLabel,
   ...props
-}: ProgressBarProps) {
+}: ProgressBarProps): JSX.Element {
   const ariaId = uniqueId('progress-bar_');
   const title = hideLabel ? label : undefined;
   return (

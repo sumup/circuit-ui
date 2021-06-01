@@ -8,6 +8,7 @@ const WithProviders: FunctionComponent = ({ children }) => (
   <ThemeProvider theme={light}>{children}</ThemeProvider>
 );
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const render = (
   component: Parameters<typeof renderTest>[0],
   options: Parameters<typeof renderTest>[1] = {},

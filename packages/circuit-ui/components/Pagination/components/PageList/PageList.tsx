@@ -51,7 +51,7 @@ export const PageList = ({
   pages,
   currentPage,
   ...props
-}: PageListProps) => (
+}: PageListProps): JSX.Element => (
   <List role="list" {...props}>
     {pages.map((page) => {
       const isCurrent = currentPage === page;

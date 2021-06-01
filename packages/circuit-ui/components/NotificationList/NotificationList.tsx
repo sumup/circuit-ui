@@ -60,7 +60,7 @@ const NotificationListCard = styled(Card)<NotificationListProps>();
 export const NotificationList = ({
   children,
   ...props
-}: NotificationListProps) => (
+}: NotificationListProps): JSX.Element => (
   <NotificationListWrapper {...props} aria-live="polite">
     {Children.map(children, (child, i) => (
       <NotificationListCard spacing="mega" shadow="double" key={i} as="li">

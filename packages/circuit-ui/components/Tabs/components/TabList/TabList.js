@@ -84,6 +84,7 @@ TabList.propTypes = {
    * Override styles for the TabList component.
    */
   className: PropTypes.string,
+  style: PropTypes.object,
 };
 
 /**

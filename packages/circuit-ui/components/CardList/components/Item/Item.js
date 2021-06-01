@@ -124,6 +124,7 @@ Item.propTypes = {
    * Content of the list item.
    */
   children: PropTypes.node.isRequired,
+  onClick: PropTypes.func,
 };
 
 Item.defaultProps = {

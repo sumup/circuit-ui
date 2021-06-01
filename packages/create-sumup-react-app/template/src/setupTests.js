@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /**
  * Add custom Jest matchers for the DOM.
  * https://github.com/testing-library/jest-dom#readme
@@ -13,7 +14,6 @@ import { toHaveNoViolations } from 'jest-axe';
  *
  * https://github.com/emotion-js/emotion/tree/master/packages/jest-emotion#custom-matchers
  */
-// eslint-disable-next-line no-undef
 expect.extend(matchers);
 expect.extend(toHaveNoViolations);
 
@@ -23,5 +23,4 @@ expect.extend(toHaveNoViolations);
  *
  * https://github.com/emotion-js/emotion/tree/master/packages/jest-emotion#snapshot-serializer
  */
-// eslint-disable-next-line no-undef
 expect.addSnapshotSerializer(serializer);

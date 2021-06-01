@@ -5,7 +5,7 @@ import { LoadingButton } from '@sumup/circuit-ui';
 const BaseLoadingButton = () => (
   <LoadingButton
     exitAnimation={LoadingButton.ERROR}
-    onAnimationComplete={console.log}
+    onAnimationComplete={() => {}}
     exitAnimationDuration={300}
   />
 );
@@ -17,7 +17,7 @@ const RedLoadingButton = styled(LoadingButton)`
 const StyledLoadingButton = () => (
   <RedLoadingButton
     exitAnimation={LoadingButton.ERROR}
-    onAnimationComplete={console.log}
+    onAnimationComplete={() => {}}
     exitAnimationDuration={300}
   />
 );

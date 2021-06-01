@@ -167,7 +167,7 @@ export function findProperty(
         name: property,
       },
     }),
-    { name: parent } as any,
+    { name: parent } as Record<string, unknown>,
   );
   return root.find(j.MemberExpression, query);
 }

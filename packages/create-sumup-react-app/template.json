@@ -12,7 +12,7 @@
       "web-vitals": "^1.0.1"
     },
     "devDependencies": {
-      "@sumup/foundry": "^4.0.0-canary",
+      "@sumup/foundry": "^4.0.0",
       "jest-axe": "^3.1.1",
       "jest-emotion": "^10.0.27",
       "jest-watch-typeahead": "^0.6.1",

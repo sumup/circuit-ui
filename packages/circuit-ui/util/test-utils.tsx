@@ -33,10 +33,8 @@ import {
   defaultComponents,
 } from '../components/ComponentsContext';
 
-export type RenderFn<T = any> = (
-  component: React.ReactElement,
-  ...rest: any
-) => T;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type RenderFn<T> = (component: React.ReactElement, ...rest: any) => T;
 
 const WithProviders: FunctionComponent = ({ children }) => (
   <ComponentsContext.Provider value={defaultComponents}>
@@ -48,7 +46,9 @@ const render: RenderFn<RenderResult> = (component, options) =>
   renderTest(component, { wrapper: WithProviders, ...options });
 const renderToHtml: RenderFn<string> = (component) =>
   renderToStaticMarkup(<WithProviders>{component}</WithProviders>);
-const create = (...args: Parameters<RenderFn<RenderResult>>) => {
+const create = (
+  ...args: Parameters<RenderFn<RenderResult>>
+): ChildNode | HTMLCollection | null => {
   const { container } = render(...args);
   return container.children.length > 1
     ? container.children
@@ -57,7 +57,7 @@ const create = (...args: Parameters<RenderFn<RenderResult>>) => {
 
 const axe = configureAxe({
   rules: {
-    // disabled landmark rules when testing isolated components.
+    // Landmark rules aren't helpful when testing isolated components
     region: { enabled: false },
   },
 });

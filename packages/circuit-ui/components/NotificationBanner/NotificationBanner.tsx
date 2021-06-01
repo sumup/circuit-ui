@@ -49,7 +49,7 @@ const NotificationBannerInner = styled('div')<NoTheme>(innerStyles);
 export const NotificationBanner = ({
   children,
   ...props
-}: NotificationBannerProps) => (
+}: NotificationBannerProps): JSX.Element => (
   <NotificationBannerOuter {...props} aria-live="polite" role="status">
     <NotificationBannerInner>{children}</NotificationBannerInner>
   </NotificationBannerOuter>

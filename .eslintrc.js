@@ -6,22 +6,12 @@ module.exports = require('@sumup/foundry/eslint')(
     openSource: true,
   },
   {
-    parserOptions: {
-      project: ['./tsconfig.eslint.json', './packages/*/tsconfig.json'],
-      tsconfigRootDir: __dirname,
-    },
     overrides: [
       {
-        files: ['**/*.js'],
-        rules: {
-          '@typescript-eslint/no-explicit-any': 'off',
-          '@typescript-eslint/no-unsafe-call': 'off',
-          '@typescript-eslint/no-unsafe-return': 'off',
-          '@typescript-eslint/no-unsafe-assignment': 'off',
-          '@typescript-eslint/no-unsafe-member-access': 'off',
-          '@typescript-eslint/restrict-template-expressions': 'off',
-          '@typescript-eslint/restrict-plus-operands': 'off',
-          '@typescript-eslint/explicit-module-boundary-types': 'off',
+        files: ['**/*.{ts,tsx}'],
+        parserOptions: {
+          project: ['./tsconfig.eslint.json', './packages/*/tsconfig.json'],
+          tsconfigRootDir: __dirname,
         },
       },
       {
@@ -34,10 +24,11 @@ module.exports = require('@sumup/foundry/eslint')(
       },
       {
         files: [
-          'packages/circuit-ui/cli/migrate/__testfixtures__/**/*.input.*',
-          'packages/circuit-ui/cli/migrate/__testfixtures__/**/*.output.*',
+          'packages/circuit-ui/cli/migrate/__testfixtures__/**/*.{input,output}.*',
         ],
         rules: {
+          'react/prop-types': 'off',
+          'no-unused-vars': 'off',
           'import/no-unresolved': 'off',
           'import/no-extraneous-dependencies': 'off',
           'notice/notice': 'off',
@@ -56,12 +47,13 @@ module.exports = require('@sumup/foundry/eslint')(
           'consistent-return': 'off',
           'no-console': 'off',
           '@typescript-eslint/no-unsafe-call': 'off',
+          '@typescript-eslint/no-explicit-any': 'off',
           '@typescript-eslint/no-unsafe-assignment': 'off',
           '@typescript-eslint/no-unsafe-member-access': 'off',
         },
       },
       {
-        files: ['packages/icons/scripts/*'],
+        files: ['packages/icons/scripts/**/*'],
         rules: {
           'import/no-extraneous-dependencies': 'off',
           'node/no-unpublished-require': 'off',

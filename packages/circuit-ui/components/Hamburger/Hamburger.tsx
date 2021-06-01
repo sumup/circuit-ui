@@ -136,7 +136,7 @@ export const Hamburger = ({
   labelInActive = 'Open menu',
   tracking = {},
   ...props
-}: HamburgerProps) => (
+}: HamburgerProps): JSX.Element => (
   <Button
     label={isActive ? labelActive : labelInActive}
     {...props}
