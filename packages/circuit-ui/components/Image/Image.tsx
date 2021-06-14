@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { HTMLProps } from 'react';
+import { HTMLProps, Ref } from 'react';
 import { css } from '@emotion/core';
 
 import styled from '../../styles/styled';
@@ -30,6 +30,7 @@ export interface ImageProps
    * user uses a screen reader.
    */
   alt: string;
+  ref?: Ref<HTMLImageElement>;
 }
 
 const baseStyles = () => css`

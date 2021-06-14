@@ -23,7 +23,9 @@ export interface ButtonGroupProps {
   /**
    * Buttons to group.
    */
-  children: ReactElement<ButtonProps>[] | ReactElement<ButtonProps>;
+  children:
+    | (ReactElement<ButtonProps> | null | undefined)[]
+    | ReactElement<ButtonProps>;
   /**
    * Direction to align the content. Either left/right
    */
