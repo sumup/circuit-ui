@@ -26,7 +26,7 @@ import {
 } from '../../styles/style-mixins';
 import { uniqueId } from '../../util/id';
 import deprecate from '../../util/deprecate';
-import useClickHandler from '../../hooks/use-click-handler';
+import { useClickHandler } from '../../hooks/useClickHandler';
 import Tooltip from '../Tooltip';
 
 export interface CheckboxProps extends HTMLProps<HTMLInputElement> {

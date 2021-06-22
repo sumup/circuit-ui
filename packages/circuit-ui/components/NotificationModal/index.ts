@@ -13,5 +13,5 @@
  * limitations under the License.
  */
 
-export { useModal } from './useModal';
-export type { ModalProps } from './Modal';
+export { useNotificationModal } from './useNotificationModal';
+export type { NotificationModalProps } from './NotificationModal';

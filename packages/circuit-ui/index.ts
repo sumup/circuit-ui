@@ -124,23 +124,12 @@ export type { TagProps } from './components/Tag';
 export { default as Popover } from './components/Popover';
 export { default as Tooltip } from './components/Tooltip';
 export { default as BaseStyles } from './components/BaseStyles';
-export {
-  default as Modal,
-  DEFAULT_APP_ELEMENT,
-  useModal,
-  ModalContext,
-  ModalConsumer,
-  ModalProvider,
-  ModalWrapper,
-  ModalHeader,
-  ModalFooter,
-} from './components/Modal';
-export type {
-  ModalProps,
-  ModalHeaderProps,
-  ModalWrapperProps,
-  ModalContextValue,
-} from './components/Modal';
+export { ModalProvider } from './components/ModalContext';
+export type { ModalProviderProps } from './components/ModalContext';
+export { useModal } from './components/Modal';
+export type { ModalProps } from './components/Modal';
+export { useNotificationModal } from './components/NotificationModal';
+export type { NotificationModalProps } from './components/NotificationModal';
 
 export { default as Table } from './components/Table';
 export type {
