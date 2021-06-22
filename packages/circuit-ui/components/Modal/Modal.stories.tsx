@@ -117,6 +117,20 @@ NotDismissible.args = {
   dismissible: false,
 };
 
+export const InitiallyOpen = (modal: ModalProps): JSX.Element => {
+  const initialModal = { id: 'initial', component: Modal, ...modal };
+  return (
+    <ModalProvider initialState={[initialModal]}>
+      <div />
+    </ModalProvider>
+  );
+};
+
+InitiallyOpen.args = {
+  children: 'Hello World!',
+  variant: 'contextual',
+};
+
 export const CustomStyles = (modal: ModalProps): JSX.Element => {
   const ComponentWithModal = () => {
     const { setModal } = useModal();
