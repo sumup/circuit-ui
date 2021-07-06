@@ -24,7 +24,6 @@ import { useClickHandler } from '../../../../hooks/useClickHandler';
 import Body from '../../../Body';
 
 const anchorStyles = ({ theme }: StyleProps) => css`
-  text-decoration: none;
   margin-right: ${theme.spacings.bit};
   padding: ${theme.spacings.byte};
 
@@ -123,7 +122,7 @@ const wrapperStyles = ({ theme }: StyleProps) => css`
   }
 `;
 
-const UtilityLinksWrapper = styled.div(wrapperStyles);
+const UtilityLinksWrapper = styled.nav(wrapperStyles);
 
 export interface UtilityLinksProps {
   links: UtilityLinkProps[];

@@ -38,11 +38,11 @@ exports[`UtilityLinks styles should match the snapshot 1`] = `
   color: #1A1A1A;
   background-color: #FFF;
   text-align: left;
+  -webkit-text-decoration: none;
+  text-decoration: none;
   cursor: pointer;
   -webkit-transition: color 120ms ease-in-out,background-color 120ms ease-in-out;
   transition: color 120ms ease-in-out,background-color 120ms ease-in-out;
-  -webkit-text-decoration: none;
-  text-decoration: none;
   margin-right: 4px;
   padding: 8px;
 }
@@ -112,7 +112,7 @@ exports[`UtilityLinks styles should match the snapshot 1`] = `
 }
 
 <div>
-  <div
+  <nav
     class="circuit-3"
   >
     <a
@@ -181,6 +181,6 @@ exports[`UtilityLinks styles should match the snapshot 1`] = `
         More
       </p>
     </a>
-  </div>
+  </nav>
 </div>
 `;

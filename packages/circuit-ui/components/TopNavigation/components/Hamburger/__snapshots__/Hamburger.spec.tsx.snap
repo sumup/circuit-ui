@@ -16,18 +16,22 @@ exports[`Hamburger styles should render with closed styles 1`] = `
   border-bottom: 1px solid #000;
 }
 
-.circuit-3:hover {
-  cursor: pointer;
-  background-color: #F5F5F5;
-}
-
 .circuit-3:focus {
   outline: 0;
-  box-shadow: inset 0 0 0 4px #AFD0FE;
+  box-shadow: 0 0 0 4px #AFD0FE;
 }
 
 .circuit-3:focus::-moz-focus-inner {
   border: 0;
+}
+
+.circuit-3:focus:not(:focus-visible) {
+  box-shadow: none;
+}
+
+.circuit-3:hover {
+  cursor: pointer;
+  background-color: #F5F5F5;
 }
 
 @media (min-width:768px) {
@@ -169,18 +173,22 @@ exports[`Hamburger styles should render with open styles 1`] = `
   border-bottom: 1px solid #000;
 }
 
-.circuit-3:hover {
-  cursor: pointer;
-  background-color: #F5F5F5;
-}
-
 .circuit-3:focus {
   outline: 0;
-  box-shadow: inset 0 0 0 4px #AFD0FE;
+  box-shadow: 0 0 0 4px #AFD0FE;
 }
 
 .circuit-3:focus::-moz-focus-inner {
   border: 0;
+}
+
+.circuit-3:focus:not(:focus-visible) {
+  box-shadow: none;
+}
+
+.circuit-3:hover {
+  cursor: pointer;
+  background-color: #F5F5F5;
 }
 
 @media (min-width:768px) {
