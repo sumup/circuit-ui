@@ -37,6 +37,7 @@ const SORT_ORDER = {
   Layout: {},
   Forms: {},
   Components: {},
+  Patterns: {},
   Packages: {
     'circuit-ui': {},
     'design-tokens': {},
