@@ -14,7 +14,7 @@
  */
 
 /* eslint-disable react/display-name */
-import { Fragment } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { css } from '@emotion/core';
 import { Theme } from '@sumup/design-tokens';
 
@@ -188,4 +188,58 @@ CustomStyles.args = {
   ),
   variant: 'contextual',
   closeButtonLabel: 'Close modal',
+};
+
+const LegacyModal = ({ isOpen, ...props }: ModalProps) => {
+  const { setModal, updateModal, removeModal } = useModal();
+
+  useEffect(() => {
+    console.log('open');
+    if (!isOpen) {
+      removeModal();
+      return () => {
+        removeModal();
+      };
+    }
+
+    setModal(props);
+
+    return () => {
+      removeModal();
+    };
+  }, [isOpen]);
+
+  // useEffect(() => {
+  //   console.log('update');
+  //   if (isOpen) {
+  //     updateModal(props);
+  //   }
+  // }, [isOpen, props]);
+
+  return null;
+};
+
+export const Legacy = () => {
+  const [open, setOpen] = useState(false);
+  const [counter, setCounter] = useState(0);
+
+  return (
+    <ModalProvider>
+      <Button onClick={() => setOpen(true)}> Open modal</Button>
+      <LegacyModal
+        key={counter}
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        closeButtonLabel=""
+        variant="contextual"
+      >
+        <div>
+          {counter}
+          <Button onClick={() => setCounter((prev) => prev + 1)}>
+            Increase counter
+          </Button>
+        </div>
+      </LegacyModal>
+    </ModalProvider>
+  );
 };

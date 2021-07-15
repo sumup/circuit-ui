@@ -25,6 +25,7 @@ export function createUseModal<T extends BaseModalProps>(
 ) {
   return (): {
     setModal: (props: Omit<T, 'isOpen'>) => void;
+    updateModal: (props: Partial<Omit<T, 'isOpen'>>) => void;
     removeModal: () => void;
   } => {
     const id = useMemo(uniqueId, []);
@@ -37,10 +38,17 @@ export function createUseModal<T extends BaseModalProps>(
       [context, id],
     );
 
+    const updateModal = useCallback(
+      (props: Partial<Omit<T, 'isOpen'>>): void => {
+        context.updateModal(id, props);
+      },
+      [context, id],
+    );
+
     const removeModal = useCallback((): void => {
       context.removeModal(id);
     }, [context, id]);
 
-    return { setModal, removeModal };
+    return { setModal, updateModal, removeModal };
   };
 }

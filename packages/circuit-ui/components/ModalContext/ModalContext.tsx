@@ -13,7 +13,13 @@
  * limitations under the License.
  */
 
-import { createContext, useEffect, useCallback, ReactNode } from 'react';
+import {
+  createContext,
+  useEffect,
+  useCallback,
+  useMemo,
+  ReactNode,
+} from 'react';
 import ReactModal, { Props as ReactModalProps } from 'react-modal';
 import { Global, css } from '@emotion/core';
 import { useClickTrigger } from '@sumup/collector';
@@ -52,12 +58,14 @@ type ModalState<TProps extends BaseModalProps> = Omit<TProps, 'isOpen'> &
 
 type ModalContextValue = {
   setModal: (modal: ModalState<any>) => void;
+  updateModal: (id: StackItem['id'], modal: Partial<ModalState<any>>) => void;
   removeModal: (id: StackItem['id']) => void;
 };
 // type ModalContextValue = [ModalState<any>[], StackDispatch<ModalState<any>>];
 
 export const ModalContext = createContext<ModalContextValue>({
   setModal: () => {},
+  updateModal: () => {},
   removeModal: () => {},
 });
 
@@ -83,6 +91,8 @@ export function ModalProvider<TProps extends BaseModalProps>({
   const sendEvent = useClickTrigger();
   const [modals, dispatch] = useStack<ModalState<TProps>>(initialState);
 
+  console.log('context');
+
   const setModal = useCallback(
     (modal: ModalState<TProps>) => {
       if (modal.tracking) {
@@ -91,6 +101,13 @@ export function ModalProvider<TProps extends BaseModalProps>({
       dispatch({ type: 'push', item: modal });
     },
     [dispatch, sendEvent],
+  );
+
+  const updateModal = useCallback(
+    (id: StackItem['id'], modal: Partial<ModalState<TProps>>) => {
+      dispatch({ type: 'update', id, item: modal });
+    },
+    [dispatch],
   );
 
   const removeModal = useCallback(
@@ -132,8 +149,14 @@ export function ModalProvider<TProps extends BaseModalProps>({
     };
   }, [activeModal, removeModal]);
 
+  const contextValue = useMemo(() => ({ setModal, updateModal, removeModal }), [
+    setModal,
+    updateModal,
+    removeModal,
+  ]);
+
   return (
-    <ModalContext.Provider value={{ setModal, removeModal }}>
+    <ModalContext.Provider value={contextValue}>
       {children}
 
       {modals.map(
